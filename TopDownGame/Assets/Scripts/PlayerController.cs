@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; //importing SceneManagement Library
 
 public class PlayerController : MonoBehaviour
 {
@@ -67,6 +68,7 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.tag.Equals("Door1"))
         {
             Debug.Log("change scene");
+            SceneManager.LoadScene("Town");
         }
     }
 }
