@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
             //go right
             newPosition.x += .01f;
             //change sprite to right sprite
-            //sr.sprite = rightSprite;
+            sr.sprite = rightSprite;
         }
 
         if (Input.GetKey("a"))
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
             //go left
             newPosition.x -= .01f;
             //change sprite to left sprite
-            //sr.sprite = leftSprite;
+            sr.sprite = leftSprite;
         }
 
         if (Input.GetKey("w"))
@@ -48,14 +48,14 @@ public class PlayerController : MonoBehaviour
             //go up
             newPosition.y += .01f;
             //change sprite to up sprite
-            //sr.sprite = upSprite;
+            sr.sprite = upSprite;
         }
 
         if (Input.GetKey("s"))
         {
             //go down
             newPosition.y -= .01f;
-            //sr.sprite = frontSprite;
+            sr.sprite = frontSprite;
         }
 
         transform.position = newPosition;
