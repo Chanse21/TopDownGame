@@ -14,13 +14,20 @@ public class PlayerController : MonoBehaviour
     public Sprite frontSprite;
     public Sprite rightSprite;
     public Sprite leftSprite;
-    
+
     //public Rigidbody2D rb;
+    public static PlayerController instance;
 
     // Start is called before the first frame update
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        if (instance != null) //if another instance of the player is in the scene
+        {
+            Destroy(gameObject); //then destroy it
+        }
+        instance = this; //reassign the instance to the current player
+        GameObject.DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
@@ -78,10 +85,12 @@ public class PlayerController : MonoBehaviour
             hasKey = true; //player has the key now
         }
 
-        if(collision.gameObject.tag.Equals("door2") && hasKey == true)
+        if(collision.gameObject.tag.Equals("Door2") && hasKey == true)
         {
             Debug.Log("unlocked door");
             //take to new scene
+            SceneManager.LoadScene("Park");
         }
+
     }
 }
