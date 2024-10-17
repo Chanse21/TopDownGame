@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class key : MonoBehaviour
 {
+    public AudioSource keySound;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class key : MonoBehaviour
         if(collision.gameObject.tag.Equals("Player"))
         {
             Debug.Log("ive been collected");
+            //keySound.Play();
             Destroy(this.gameObject);//destroy the key
         }
     }

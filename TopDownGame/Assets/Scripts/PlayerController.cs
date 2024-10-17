@@ -15,12 +15,19 @@ public class PlayerController : MonoBehaviour
     public Sprite rightSprite;
     public Sprite leftSprite;
 
+    //audio variables
+    public AudioSource soundEffects;
+    public AudioClip itemCollect;
+    public AudioClip doorEnter;
+    public AudioClip[] sounds;
+
     //public Rigidbody2D rb;
     public static PlayerController instance;
 
     // Start is called before the first frame update
     void Start()
     {
+        soundEffects = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
         if (instance != null) //if another instance of the player is in the scene
         {
@@ -38,7 +45,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey("d")) 
         {
             //go right
-            newPosition.x += .01f;
+            newPosition.x += .02f;
             //change sprite to right sprite
             sr.sprite = rightSprite;
         }
@@ -46,7 +53,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey("a"))
         {
             //go left
-            newPosition.x -= .01f;
+            newPosition.x -= .02f;
             //change sprite to left sprite
             sr.sprite = leftSprite;
         }
@@ -54,7 +61,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey("w"))
         {
             //go up
-            newPosition.y += .01f;
+            newPosition.y += .02f;
             //change sprite to up sprite
             sr.sprite = upSprite;
         }
@@ -62,7 +69,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey("s"))
         {
             //go down
-            newPosition.y -= .01f;
+            newPosition.y -= .02f;
             sr.sprite = frontSprite;
         }
 
@@ -76,20 +83,22 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.tag.Equals("Door1"))
         {
             Debug.Log("change scene");
-            SceneManager.LoadScene("Town");
+            soundEffects.PlayOneShot(sounds[0], .7f); //play door sound effect
+            SceneManager.LoadScene("Town"); //take to new scene
         }
 
         if(collision.gameObject.tag.Equals("key"))
         {
             Debug.Log("obtained key");
+            soundEffects.PlayOneShot(itemCollect, .7f); //play item collect sound effect
             hasKey = true; //player has the key now
         }
 
         if(collision.gameObject.tag.Equals("Door2") && hasKey == true)
         {
             Debug.Log("unlocked door");
-            //take to new scene
-            SceneManager.LoadScene("Park");
+            soundEffects.PlayOneShot(sounds[1], .7f); //play door sound effect
+            SceneManager.LoadScene("Park"); //take to new scene
         }
 
     }
