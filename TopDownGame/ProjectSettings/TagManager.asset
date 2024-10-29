@@ -8,6 +8,12 @@ TagManager:
   - key
   - Door2
   - Door3
+  - Textbox
+  - Textbox2
+  - Textbox3
+  - Citizen
+  - Citizen2
+  - Dog
   layers:
   - Default
   - TransparentFX
