@@ -106,5 +106,9 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene("Park"); //take to new scene
         }
 
+        if (collision.gameObject.tag.Equals("Door4"))
+        {
+            SceneManager.LoadScene("Endscene"); //take to new scene
+        }
     }
 }
